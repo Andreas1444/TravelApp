@@ -1,0 +1,26 @@
+ <link rel = "stylesheet" href="{{url_for('static', filename = 'files/Design.css')}}">
+{% if filename %}
+    <div>
+        <h1>Welcome to the Menu</h1>
+         <a href="{{ url_for('home') }}" class='custom-button-class left-button'>Back to Home</a>
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='files/' + filename) }}" alt="Last Uploaded Image" style="max-width: 50%; height: auto;">
+        </div>
+        <div class="text-container">
+            {% if text_from_image %}
+                <p>Text from the uploaded image:</p>
+                {% for line in text_from_image.split('\n') %}
+                    <!--<a href="{{ url_for('recipe') }}"   >&#8226; {{ line|safe }}</a><br><br> -->
+                    <a href="{{ url_for('recipe', name=line|safe) }}" class='custom-button-class'  >&#8226; {{ line|safe }}</a><br><br>
+                {% endfor %}
+            {% else %}
+                <p>No text available</p>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+
+

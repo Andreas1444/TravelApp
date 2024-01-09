@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel = "stylesheet" href="{{url_for('static', filename = 'files/Design.css')}}">
+</head>
+<body>
+<!--    <a href="{{ url_for('menu') }}" class='custom-button-class left-button'>Back to the Meniu</a>-->
+    <h1>The Recipe for {{name_recipe}}</h1>
+
+    <img src="{{ picture_url }}" alt="{{ name_recipe }} Image" style="max-width: 50%; height: auto;">
+
+    {% for line in recipe.split('\n') %}
+                    <!--<a href="{{ url_for('recipe') }}"   >&#8226; {{ line|safe }}</a><br><br> -->
+                    <p>{{ line|safe }}<p>
+    {% endfor %}
+
+
+</body>
+</html>
